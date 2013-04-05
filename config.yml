@@ -1,0 +1,6 @@
+Place:
+  kick: false
+  message: You are not allowed to place/use this block.
+  bannedBlocks:
+   - '116'
+   // you can place any other block if here
