@@ -1,4 +1,4 @@
 BlockStopper
 ============
 
-Stops blocks from being spawned
+Stops certain blocks from being spawned
