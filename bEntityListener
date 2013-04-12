@@ -13,7 +13,7 @@ import org.bukkit.event.entity.EntityExplodeEvent;
  */
 class bEntityListener implements Listener {
     public bEntityListener(blockStopper blockStopper) {
-  	plugin = blockStopper;
+		plugin = blockStopper;
 		plugin.getServer().getPluginManager().registerEvents(this, plugin);
 	}
 
