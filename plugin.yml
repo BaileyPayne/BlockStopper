@@ -4,7 +4,7 @@ main: me.baileypayne.blockStopper.blockStopper
 author: Bailey Payne
 description: Disables players placing some blocks
 commands:
-  iblock:
+  rblockstopper:
     description: Reloads the iBlock configuration file.
     usage: |
            /<command>
