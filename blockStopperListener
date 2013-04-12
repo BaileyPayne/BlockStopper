@@ -1,3 +1,4 @@
+
 package me.baileypayne.blockStopper;
 
 import org.bukkit.ChatColor;
@@ -12,7 +13,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
  */
 class blockStopperListener implements Listener {
     public blockStopperListener(blockStopper blockStopper) {
-  	plugin = blockStopper;
+		plugin = blockStopper;
 		plugin.getServer().getPluginManager().registerEvents(this, plugin);
 	}
 
@@ -21,9 +22,9 @@ class blockStopperListener implements Listener {
 	@EventHandler
 	public void onBlockPlace(BlockPlaceEvent event) {
 		Player player = event.getPlayer();
-		if (!player.hasPermission("iBlock.place") && plugin.getConfig().getIntegerList("Place.bannedBlocks").contains(event.getBlock().getTypeId())) {
+		if (!player.hasPermission("BlockStopper.place") && plugin.getConfig().getIntegerList("Place.bannedBlocks").contains(event.getBlock().getTypeId())) {
 			event.setCancelled(true);
-			event.getPlayer().sendMessage(ChatColor.GREEN + "[iBlock] " + ChatColor.RED + plugin.getConfig().getString("Place.message"));
+			event.getPlayer().sendMessage(ChatColor.RED + "[BlockStopper] " + ChatColor.WHITE + plugin.getConfig().getString("Place.message"));
 			if (plugin.getConfig().getBoolean("Place.kick")){
 				event.getPlayer().kickPlayer(plugin.getConfig().getString("Place.message"));
 			}
