@@ -3,4 +3,14 @@ Place:
   message: You are not allowed to place this block.
   bannedBlocks:
    - 'BLOCK ID HERE'
+Drop:
+   kick: false
+   message: You are not allowed to Drop this block.
+   bannedBlocks:
+   - 'BLOCK ID HERE'   
+Break:
+   kick: flse
+   message: You are not allowed to Break this block.
+   bannedBlocks:
+   - 'BLOCK ID HERE'  
    
