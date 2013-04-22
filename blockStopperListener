@@ -5,7 +5,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
 
 /**
  *
@@ -29,7 +31,34 @@ class blockStopperListener implements Listener {
 				event.getPlayer().kickPlayer(plugin.getConfig().getString("Place.message"));
 			}
 		} else if (plugin.getConfig().getIntegerList("Place.bannedBlocks").contains(event.getBlock().getTypeId())) {
-			// Ignore this player -- do not block banned place-able blocks.
+			
 		}
 	}
+        public void onPlayerDropItemEvent(PlayerDropItemEvent event){
+            Player player = event.getPlayer();
+            if (!player.hasPermission("BlockStopper.drop") && plugin.getConfig().getIntegerList("drop.bannedBlocks").contains(event.getItemDrop())) {
+			event.setCancelled(true);
+			event.getPlayer().sendMessage(ChatColor.RED + "[BlockStopper] " + ChatColor.WHITE + plugin.getConfig().getString("Drop.message"));
+			if (plugin.getConfig().getBoolean("Drop.kick")){
+				event.getPlayer().kickPlayer(plugin.getConfig().getString("Drop.message"));
+            
+        }
+}
+            
+        }
+        public void onBlockBreak(BlockBreakEvent event) {
+		Player player = event.getPlayer();
+		if (!player.hasPermission("BlockStopper.break") && plugin.getConfig().getIntegerList("Break.bannedBlocks").contains(event.getBlock().getTypeId())) {
+			event.setCancelled(true);
+			event.getPlayer().sendMessage(ChatColor.GREEN + "[BlockStopper] " + ChatColor.RED + plugin.getConfig().getString("Break.message"));
+			if (plugin.getConfig().getBoolean("Break.kick")){
+				event.getPlayer().kickPlayer(plugin.getConfig().getString("Break.message"));
+			}
+		} else {
+			if (plugin.getConfig().getIntegerList("Break.bannedBlocks").contains(event.getBlock().getTypeId())) {
+				
+                            
+			}
+		}
+}
 }
