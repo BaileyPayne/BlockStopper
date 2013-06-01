@@ -5,6 +5,6 @@ author: Bailey Payne
 description: Disables players placing some blocks
 commands:
   rblockstopper:
-    description: Reloads the iBlock configuration file.
+    description: Reloads the BlockStopper configuration file.
     usage: |
            /<command>
