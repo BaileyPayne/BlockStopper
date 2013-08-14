@@ -9,8 +9,13 @@ Drop:
    bannedBlocks:
    - 'BLOCK ID HERE'   
 Break:
-   kick: flse
+   kick: false
    message: You are not allowed to Break this block.
    bannedBlocks:
    - 'BLOCK ID HERE'  
+Pickup:
+   kick: false
+   message: You are not allowed to pick up this block.
+   bannedBlocks:
+   - 'BLOCK ID HERE'     
    
