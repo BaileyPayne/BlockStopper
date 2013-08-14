@@ -7,7 +7,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.player.PlayerBucketEmptyEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerPickupItemEvent;
+
 
 /**
  *
@@ -24,7 +27,7 @@ class blockStopperListener implements Listener {
 	@EventHandler
 	public void onBlockPlace(BlockPlaceEvent event) {
 		Player player = event.getPlayer();
-		if (!player.hasPermission("BlockStopper.place") && plugin.getConfig().getIntegerList("Place.bannedBlocks").contains(event.getBlock().getTypeId())) {
+		if (!player.hasPermission("blockbtopper.place") && plugin.getConfig().getIntegerList("Place.bannedBlocks").contains(event.getBlock().getTypeId())) {
 			event.setCancelled(true);
 			event.getPlayer().sendMessage(ChatColor.RED + "[BlockStopper] " + ChatColor.WHITE + plugin.getConfig().getString("Place.message"));
 			if (plugin.getConfig().getBoolean("Place.kick")){
@@ -36,7 +39,7 @@ class blockStopperListener implements Listener {
 	}
         public void onPlayerDropItemEvent(PlayerDropItemEvent event){
             Player player = event.getPlayer();
-            if (!player.hasPermission("BlockStopper.drop") && plugin.getConfig().getIntegerList("drop.bannedBlocks").contains(event.getItemDrop())) {
+            if (!player.hasPermission("blockstopper.drop") && plugin.getConfig().getIntegerList("Drop.bannedBlocks").contains(event.getItemDrop())) {
 			event.setCancelled(true);
 			event.getPlayer().sendMessage(ChatColor.RED + "[BlockStopper] " + ChatColor.WHITE + plugin.getConfig().getString("Drop.message"));
 			if (plugin.getConfig().getBoolean("Drop.kick")){
@@ -48,7 +51,7 @@ class blockStopperListener implements Listener {
         }
         public void onBlockBreak(BlockBreakEvent event) {
 		Player player = event.getPlayer();
-		if (!player.hasPermission("BlockStopper.break") && plugin.getConfig().getIntegerList("Break.bannedBlocks").contains(event.getBlock().getTypeId())) {
+		if (!player.hasPermission("blockstopper.break") && plugin.getConfig().getIntegerList("Break.bannedBlocks").contains(event.getBlock().getTypeId())) {
 			event.setCancelled(true);
 			event.getPlayer().sendMessage(ChatColor.GREEN + "[BlockStopper] " + ChatColor.RED + plugin.getConfig().getString("Break.message"));
 			if (plugin.getConfig().getBoolean("Break.kick")){
@@ -61,4 +64,20 @@ class blockStopperListener implements Listener {
 			}
 		}
 }
+        public void onPlayerPickupItemEvent(PlayerPickupItemEvent event) {
+		Player player = event.getPlayer();
+		if (!player.hasPermission("blockstopper.pickup") && plugin.getConfig().getIntegerList("Pickup.bannedBlocks").contains(event.getItem())) {
+			event.setCancelled(true);
+			event.getPlayer().sendMessage(ChatColor.GREEN + "[BlockStopper] " + ChatColor.RED + plugin.getConfig().getString("Pickup.message"));
+			if (plugin.getConfig().getBoolean("Pickup.kick")){
+				event.getPlayer().kickPlayer(plugin.getConfig().getString("Pickup.message"));
+			}
+		} else {
+			if (plugin.getConfig().getIntegerList("Break.bannedBlocks").contains(event.getItem())) {
+				
+                            
+			}
+		}
+}
+        
 }
