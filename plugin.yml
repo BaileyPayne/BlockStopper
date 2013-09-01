@@ -1,10 +1,14 @@
 name: BlockStopper
-version: 1.0
-main: me.baileypayne.blockStopper.blockStopper
+version: 2.0
+main: me.baileypayne.blockstopper.BlockStopper
 author: Bailey Payne
-description: Disables players placing some blocks
+description: Totally Configurable Block Plugin
 commands:
-  rblockstopper:
+  blockstopper:
     description: Reloads the BlockStopper configuration file.
     usage: |
            /<command>
+permissions:
+  blockstopper.reload:
+    description: access to reload
+    default: op
