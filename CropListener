@@ -1,0 +1,103 @@
+
+package me.baileypayne.blockstopper;
+
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
+import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.inventory.ItemStack;
+
+/**
+ *
+ * @author Bailey
+ */
+class CropListener implements Listener {
+    
+    private BlockStopper plugin;
+
+    public CropListener(BlockStopper aThis) {
+        this.plugin = plugin;
+    }
+    public void onCarrotBreakEvent(BlockBreakEvent event){
+        final Player player = event.getPlayer();
+final Block block = event.getBlock();
+final byte id = block.getData();
+if("true".equals(plugin.getConfig().getString("CarrotReplant"))){
+if (block.getType() == Material.CARROT
+&& block.getRelative(BlockFace.DOWN).getType() == Material.SOIL) {
+final Location loc = block.getLocation();
+event.setCancelled(true);
+			event.getBlock().setType(Material.AIR);
+			if (event.getBlock().getData() >= 7)
+			{
+				event.getBlock().getWorld().dropItem(event.getBlock().getLocation(), new ItemStack(Material.CARROT, 1 + (int)(Math.random() * ((3 - 1) + 1))));
+			}
+int task = plugin.getServer().getScheduler()
+.scheduleSyncDelayedTask(plugin, new Runnable() {
+public void run() {
+player.getWorld()
+.getBlockAt(loc)
+.setTypeIdAndData(Material.CARROT.getId(),
+id, true);
+}
+}, 10L);
+}
+}
+    }
+    public void onPotatoBreakEvent(BlockBreakEvent event){
+        final Player player = event.getPlayer();
+final Block block = event.getBlock();
+final byte id = block.getData();
+if("true".equals(plugin.getConfig().getString("PotatoReplant"))){
+if (block.getType() == Material.POTATO
+&& block.getRelative(BlockFace.DOWN).getType() == Material.SOIL) {
+final Location loc = block.getLocation();
+event.setCancelled(true);
+			event.getBlock().setType(Material.AIR);
+			if (event.getBlock().getData() >= 7)
+			{
+				event.getBlock().getWorld().dropItem(event.getBlock().getLocation(), new ItemStack(Material.POTATO, 1 + (int)(Math.random() * ((3 - 1) + 1))));
+			}
+int task = plugin.getServer().getScheduler()
+.scheduleSyncDelayedTask(plugin, new Runnable() {
+public void run() {
+player.getWorld()
+.getBlockAt(loc)
+.setTypeIdAndData(Material.POTATO.getId(),
+id, true);
+}
+}, 10L);
+}
+}
+    }
+    public void onWheatBreakEvent(BlockBreakEvent event){
+        final Player player = event.getPlayer();
+final Block block = event.getBlock();
+final byte id = block.getData();
+if("true".equals(plugin.getConfig().getString("WheatReplant"))){
+if (block.getType() == Material.WHEAT
+&& block.getRelative(BlockFace.DOWN).getType() == Material.SOIL) {
+final Location loc = block.getLocation();
+event.setCancelled(true);
+			event.getBlock().setType(Material.AIR);
+			if (event.getBlock().getData() >= 7)
+			{
+				event.getBlock().getWorld().dropItem(event.getBlock().getLocation(), new ItemStack(Material.WHEAT, 1 + (int)(Math.random() * ((3 - 1) + 1))));
+			}
+int task = plugin.getServer().getScheduler()
+.scheduleSyncDelayedTask(plugin, new Runnable() {
+public void run() {
+player.getWorld()
+.getBlockAt(loc)
+.setTypeIdAndData(Material.SEEDS.getId(),
+id, true);
+}
+}, 10L);
+}
+    }
+    
+}
+}
