@@ -17,5 +17,10 @@ Pickup:
    kick: false
    message: You are not allowed to pick up this block.
    bannedBlocks:
-   - 'BLOCK ID HERE'     
+   - 'BLOCK ID HERE' 
+SaplingReplant: true
+SaplingBreak: true
+CarrotReplant: true
+PotatoReplant: true
+WheatReplant: true
    
