@@ -1,0 +1,22 @@
+package me.baileypayne.blockstopper;
+
+
+import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
+
+/**
+ *
+ * @author Bailey
+ */
+class PlayerListener implements Listener {
+    
+    private BlockStopper plugin;
+
+    public PlayerListener(BlockStopper aThis) {
+        this.plugin = plugin;
+    }
+		
+    public void onPlayerJoinEvent(PlayerJoinEvent event){
+	Player player = event.getPlayer()
+	
+	}
