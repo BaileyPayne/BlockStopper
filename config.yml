@@ -23,4 +23,18 @@ SaplingBreak: true
 CarrotReplant: true
 PotatoReplant: true
 WheatReplant: true
+BlockBurn: true
+LeavesDecay: true
+Bucket:
+  Water:
+    kick: false
+    message: You are not allowed to place water here.
+  Lava:
+    kick: false
+    message: You are not allowed to place lava here.
+Join:
+  Message:
+  Players:
+    - 'Player Name Here'
+Healingbed: false    
    
