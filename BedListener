@@ -1,0 +1,26 @@
+
+package me.baileypayne.blockstopper;
+
+import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerBedEnterEvent;
+
+/**
+ *
+ * @author Bailey
+ */
+class BedListener implements Listener {
+    
+    private BlockStopper plugin;
+
+    public BedListener(BlockStopper aThis) {
+        this.plugin = plugin;
+    }
+    public void onPlayerBedEnterEvent(PlayerBedEnterEvent e){
+        Player player = e.getPlayer();
+        if( "true".equals(plugin.getConfig().getString("Healingbed"))){
+        player.setHealth(20);
+    }
+    
+}
+}
