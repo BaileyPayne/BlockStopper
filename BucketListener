@@ -1,0 +1,46 @@
+
+package me.baileypayne.blockstopper;
+
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerBucketEmptyEvent;
+
+/**
+ *
+ * @author Bailey
+ */
+class BucketListener implements Listener {
+    
+    private BlockStopper plugin;
+
+    public BucketListener(BlockStopper aThis) {
+        this.plugin = plugin;
+    }
+    @EventHandler
+	public void onPlayerBucketEmpty(PlayerBucketEmptyEvent event) {
+		Player player = event.getPlayer();
+		if (!player.hasPermission("blockstopper.bucket.water") && event.getBucket() == Material.WATER_BUCKET) {
+			event.setCancelled(true);
+			event.getPlayer().sendMessage(ChatColor.GREEN + "[BlockStopper] " + ChatColor.RED + plugin.getConfig().getString("Bucket.Water.message"));
+			if (plugin.getConfig().getBoolean("Bucket.Water.kick")){
+				event.getPlayer().kickPlayer(plugin.getConfig().getString("Bucket.Water.message"));
+			}
+		} else if (player.hasPermission("blockstopper.bucket.water") && event.getBucket() == Material.WATER_BUCKET) {
+			
+		}
+
+		if (!player.hasPermission("blockstopper.bucket.lava") && event.getBucket() == Material.LAVA_BUCKET) {
+			event.setCancelled(true);
+			event.getPlayer().sendMessage(ChatColor.GREEN + "[BlockStopper] " + ChatColor.RED + plugin.getConfig().getString("Bucket.Lava.message"));
+			if (plugin.getConfig().getBoolean("Bucket.Lava.kick")){
+				event.getPlayer().kickPlayer(plugin.getConfig().getString("Bucket.Lava.message"));
+			}
+		} else if (player.hasPermission("blockstopper.bucket.lava") && event.getBucket() == Material.LAVA_BUCKET) {
+			
+		}
+	}
+    
+}
