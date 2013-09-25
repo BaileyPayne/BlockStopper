@@ -18,7 +18,7 @@ public class BlockStopper extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BlockListener(this), this);
         getServer().getPluginManager().registerEvents(new SaplingListener(this), this);
         getServer().getPluginManager().registerEvents(new CropListener(this), this);
-		getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
         if (!new File(getDataFolder(), "config.yml").exists()) {
      saveDefaultConfig();
 }
