@@ -1,3 +1,4 @@
+
 package me.baileypayne.blockstopper;
 
 import java.io.File;
@@ -18,7 +19,9 @@ public class BlockStopper extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BlockListener(this), this);
         getServer().getPluginManager().registerEvents(new SaplingListener(this), this);
         getServer().getPluginManager().registerEvents(new CropListener(this), this);
+        getServer().getPluginManager().registerEvents(new BucketListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
+        getServer().getPluginManager().registerEvents(new BedListener(this), this);
         if (!new File(getDataFolder(), "config.yml").exists()) {
      saveDefaultConfig();
 }
@@ -31,12 +34,12 @@ public class BlockStopper extends JavaPlugin {
 
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
-			if (cmd.getName().equalsIgnoreCase("BlockStopper") && player.hasPermission("blockstopper.reload")) {
+			if (cmd.getName().equalsIgnoreCase("blockstopper") && player.hasPermission("blockstopper.reload")) {
 				this.reloadConfig();
 				player.sendMessage(ChatColor.YELLOW + "[BlockStopper Information]");
 				player.sendMessage(ChatColor.YELLOW+ "BlockStopper Config Has Been Reloaded.");
 				player.sendMessage(ChatColor.YELLOW + "[Version Information]");
-				player.sendMessage(ChatColor.YELLOW + "Version: 2");
+				player.sendMessage(ChatColor.YELLOW + "Version: 3");
 				player.sendMessage(ChatColor.YELLOW + "Developer: Bailey Payne");
 				player.sendMessage(ChatColor.YELLOW + "Look For updates @ http://www.curse.com/bukkit-plugins/minecraft/block-stopper");
 				return true;
