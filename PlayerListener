@@ -1,8 +1,10 @@
+
 package me.baileypayne.blockstopper;
 
-
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 
 /**
  *
@@ -15,8 +17,12 @@ class PlayerListener implements Listener {
     public PlayerListener(BlockStopper aThis) {
         this.plugin = plugin;
     }
-		
+    @EventHandler
     public void onPlayerJoinEvent(PlayerJoinEvent event){
-	Player player = event.getPlayer()
-	
-	}
+        Player player = event.getPlayer();
+        if(plugin.getConfig().getStringList("Join.Players").contains(player.getName())){
+            player.sendMessage(plugin.getConfig().getString("Join.Message"));
+        }
+    }
+    
+}
